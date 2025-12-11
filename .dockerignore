@@ -1,0 +1,75 @@
+# =============================================================================
+# Backend .dockerignore
+# =============================================================================
+# Exclude files that should not be in the Docker build context.
+# This reduces build time, image size, and prevents leaking sensitive data.
+# =============================================================================
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# IDE
+.idea/
+.vscode/
+*.sublime-*
+
+# Dependencies (will be installed in container)
+vendor/
+
+# Environment files (use Docker secrets in production)
+.env
+.env.*
+!.env.example
+
+# Cache and logs
+storage/logs/*
+!storage/logs/.gitkeep
+storage/framework/cache/*
+!storage/framework/cache/.gitkeep
+storage/framework/sessions/*
+!storage/framework/sessions/.gitkeep
+storage/framework/views/*
+!storage/framework/views/.gitkeep
+bootstrap/cache/*
+!bootstrap/cache/.gitkeep
+
+# Testing
+tests/
+phpunit.xml
+phpunit.xml.bak
+coverage/
+.phpunit.result.cache
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Static analysis
+phpstan.neon
+phpstan-baseline.neon
+
+# Node (frontend is separate)
+node_modules/
+package.json
+package-lock.json
+vite.config.js
+
+# Local database
+database/*.sqlite
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Docker
+Dockerfile
+Dockerfile.*
+docker-compose*.yml
+.docker/
+

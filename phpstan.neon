@@ -1,0 +1,31 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+    level: 7
+    paths:
+        - app
+    excludePaths:
+        - app/Console/Kernel.php
+    tmpDir: %rootDir%/tmp
+    checkMissingIterableValueType: true
+    checkGenericClassInNonGenericObjectType: true
+    checkTooWideReturnTypesInProtectedAndPublicMethods: true
+    checkUninitializedProperties: true
+    checkExplicitMixedMissingReturn: true
+    checkPhpDocMethodSignatures: true
+    checkPhpDocMissingReturn: true
+    ignoreErrors:
+        - '#Method .* should return .* but returns .*\$this\(.*\)>\.#'
+        - '#Class .* uses generic trait Illuminate\\Database\\Eloquent\\Factories\\HasFactory but does not specify its types#'
+        - '#Call to static method toModel\(\) on an unknown class App\\Infrastructure\\Persistence\\AI\\AIJobMapper#'
+        - '#Access to property .* on an unknown class App\\Domain\\AI\\Entities\\AIJobEntity#'
+        - '#Parameter .* of method .* has invalid type App\\Domain\\AI\\Entities\\AIJobEntity#'
+        - '#Result of method App\\Domain\\AI\\Repositories\\AIJobRepositoryInterface::save\(\) \(void\) is used#'
+        - '#Class App\\Domain\\Routines\\Repositories\\RoutineExecutionRepositoryInterface not found#'
+        - '#Class App\\Infrastructure\\Persistence\\Routines\\EloquentRoutineExecutionRepository not found#'
+        - '#Method .* return type has no value type specified in iterable type array#'
+        - '#Parameter #1 \$checks of method .*determineOverallStatus\(\) expects array<string, array\{status: string, details\?: string\}>, array\{database: array, rabbitmq: array, ai: array, speech: array\} given#'
+        - '#Method .* has parameter .* with no value type specified in iterable type array#'
+        - '#Call to an undefined method App\\Models\\AIJob::withStatus\(\)#'
+
